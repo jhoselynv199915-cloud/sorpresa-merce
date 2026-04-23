@@ -8,19 +8,24 @@
 <style>
 body{
   margin:0;
-  font-family: 'Arial';
+  font-family: Arial, sans-serif;
   background: linear-gradient(135deg, #000000, #1a1a2e);
   color: #00ffcc;
+
   display:flex;
   justify-content:center;
-  align-items:center;
-  height:100vh;
+  align-items:flex-start;
+
+  min-height:100vh;
   text-align:center;
-  overflow:hidden;
+
+  overflow-y:auto;
+  padding:20px 10px;
 }
 
 .container{
   max-width: 400px;
+  width:100%;
   padding:20px;
   border: 2px solid #00ffcc;
   border-radius:15px;
@@ -32,8 +37,8 @@ h1{
 }
 
 img{
-  width:90px;
-  height:90px;
+  width:80px;
+  height:80px;
   border-radius:50%;
   margin:5px;
   object-fit:cover;
@@ -89,22 +94,34 @@ img{
 #fade.active{
   opacity:1;
 }
+
+/* Responsive extra */
+@media (max-width:480px){
+  h1{
+    font-size:20px;
+  }
+
+  .final{
+    font-size:16px;
+  }
+
+  .btn{
+    width:100%;
+  }
+}
 </style>
 
 <script>
 function revelar(){
 
-  // Inicia música
   document.getElementById('music').play();
 
   const fade = document.getElementById("fade");
 
-  // Apagar pantalla
   fade.classList.add("active");
 
   setTimeout(() => {
 
-    // Mostrar sorpresa
     document.querySelector(".container").innerHTML = `
     
     <h1>💖 Feliz Cumpleaños Merce 💖</h1>
@@ -130,8 +147,13 @@ function revelar(){
     </div>
     `;
 
-    // Encender pantalla (mostrar sorpresa)
     fade.classList.remove("active");
+
+    // 🔥 scroll hacia arriba automático
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
 
   }, 1000);
 }
@@ -141,15 +163,12 @@ function revelar(){
 
 <body>
 
-<!-- Pantalla negra -->
 <div id="fade"></div>
 
-<!-- Música -->
 <audio id="music" loop>
   <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
 </audio>
 
-<!-- Contenido inicial -->
 <div class="container">
   <h2>📡 Estableciendo conexión...</h2>
   <p>Sincronizando datos...</p>
