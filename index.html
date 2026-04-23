@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para ti 💖</title>
+
+<style>
+body{
+  margin:0;
+  font-family: 'Arial';
+  background: linear-gradient(135deg, #000000, #1a1a2e);
+  color: #00ffcc;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  text-align:center;
+  overflow:hidden;
+}
+
+.container{
+  max-width: 400px;
+  padding:20px;
+  border: 2px solid #00ffcc;
+  border-radius:15px;
+  box-shadow:0 0 25px #00ffcc;
+}
+
+h1{
+  color:#ff4d6d;
+}
+
+img{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  margin:5px;
+  object-fit:cover;
+  border:2px solid white;
+}
+
+.gallery{
+  margin-top:10px;
+}
+
+.code{
+  margin-top:15px;
+  font-size:13px;
+}
+
+.final{
+  margin-top:15px;
+  font-size:18px;
+  color:white;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+  from{opacity:0.6;}
+  to{opacity:1;}
+}
+
+.btn{
+  margin-top:20px;
+  padding:10px 20px;
+  border:none;
+  background:#ff4d6d;
+  color:white;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:16px;
+}
+
+/* Pantalla negra */
+#fade{
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:black;
+  opacity:0;
+  pointer-events:none;
+  transition: opacity 1s ease;
+  z-index:999;
+}
+
+#fade.active{
+  opacity:1;
+}
+</style>
+
+<script>
+function revelar(){
+
+  // Inicia música
+  document.getElementById('music').play();
+
+  const fade = document.getElementById("fade");
+
+  // Apagar pantalla
+  fade.classList.add("active");
+
+  setTimeout(() => {
+
+    // Mostrar sorpresa
+    document.querySelector(".container").innerHTML = `
+    
+    <h1>💖 Feliz Cumpleaños Merce 💖</h1>
+
+    <div class="gallery">
+      <img src="foto1.jpg">
+      <img src="foto2.jpg">
+      <img src="foto3.jpg">
+    </div>
+
+    <p>📡 Señal detectada</p>
+    <p>Frecuencia: Amistad eterna</p>
+    <p>Estado: Activa desde hace años</p>
+    <p>Error: Imposible reemplazar a esta persona</p>
+    <p>Resultado: Eres demasiado importante para mí ❤️</p>
+
+    <div class="code">
+    01010100 01100101 00100000 01110001 01110101 01101001 01100101 01110010 01101111 ❤️
+    </div>
+
+    <div class="final">
+    Sistema activado: Mejor amiga 💕
+    </div>
+    `;
+
+    // Encender pantalla (mostrar sorpresa)
+    fade.classList.remove("active");
+
+  }, 1000);
+}
+</script>
+
+</head>
+
+<body>
+
+<!-- Pantalla negra -->
+<div id="fade"></div>
+
+<!-- Música -->
+<audio id="music" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
+</audio>
+
+<!-- Contenido inicial -->
+<div class="container">
+  <h2>📡 Conectando con estación especial...</h2>
+  <p>Cargando señal...</p>
+
+  <button class="btn" onclick="revelar()">Abrir sorpresa 💌</button>
+</div>
+
+</body>
+</html>
